@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://—Pngtree—light ray effects glow_7589267.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://player.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50, 50 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 70, 70 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 579, 950 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2( 0.747753, 0.753887 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 2, 2 )
+smoothing_enabled = true
+
+[node name="Light2D" type="Light2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 1 )
+color = Color( 1, 1, 1, 0.486275 )
+shadow_enabled = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
