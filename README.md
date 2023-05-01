@@ -1,2 +1,2 @@
 # TopDownShooter
-template for godot game development
+template for godot game development.
